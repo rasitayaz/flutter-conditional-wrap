@@ -6,6 +6,8 @@
 
 A widget that allows you to conditionally wrap a child subtree with a parent widget
 
+![](https://raw.githubusercontent.com/rasitayaz/flutter-conditional-wrap/master/sample.jpg)
+
 ## Usage
 
 Simply wrap the widget subtree with a `ConditionalWrap` widget and pass the required properties.
