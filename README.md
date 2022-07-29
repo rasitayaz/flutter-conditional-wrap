@@ -1,39 +1,30 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Flutter Conditional Wrap
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+[![Pub](https://img.shields.io/pub/v/conditional_wrap.svg?style=popout)](https://pub.dartlang.org/packages/conditional_wrap)
+[![](https://img.shields.io/badge/github-rasitayaz-red)](https://github.com/rasitayaz)
+[![](https://img.shields.io/badge/buy&nbsp;me&nbsp;a&nbsp;coffee-donate-blue)](https://www.buymeacoffee.com/RasitAyaz)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+A widget that allows you to conditionally wrap a child subtree with a parent widget
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+Simply wrap the widget subtree with a `ConditionalWrap` widget and pass the required properties.
 
 ```dart
-const like = 'sample';
+ConditionalWrap(
+  condition: shouldIncludeParent,
+  positiveBuilder: (context, child) => ParentWidget(child: child),
+  child: ChildSubtree(),
+),
 ```
 
-## Additional information
+You can also provide an alternative builder to use when the `condition` is false.
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+```dart
+ConditionalWrap(
+  condition: shouldUsePositiveBuilder,
+  positiveBuilder: (context, child) => ParentWidget(child: child),
+  negativeBuilder: (context, child) => AlternativeParent(child: child),
+  child: ChildSubtree(),
+),
+```
