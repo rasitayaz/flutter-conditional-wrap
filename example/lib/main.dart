@@ -92,5 +92,5 @@ class _AppState extends State<App> {
 }
 
 extension ColorExtension on Color {
-  String? get title => this == Colors.blue ? 'blue' : null;
+  String get title => this == Colors.blue ? 'blue' : 'unknown';
 }
