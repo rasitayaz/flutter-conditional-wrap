@@ -14,6 +14,7 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   bool _condition = false;
+  Color? _color;
 
   @override
   Widget build(BuildContext context) {
@@ -23,42 +24,62 @@ class _AppState extends State<App> {
       home: Scaffold(
         body: Center(
           child: SizedBox(
-            width: 256,
+            width: 300,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 SwitchListTile(
                   value: _condition,
-                  title: const Text('Condition'),
+                  title: const Text('condition'),
                   onChanged: (value) => setState(() => _condition = value),
                 ),
                 const SizedBox(height: 16),
                 ConditionalWrap(
                   condition: _condition,
-                  positiveBuilder: (context, child) => ColoredBox(
+                  builder: (child) => ColoredBox(
                     color: Colors.green,
                     child: child,
                   ),
                   child: const Padding(
                     padding: EdgeInsets.all(16),
-                    child: Text('Only Positive Parent Builder'),
+                    child: Text('conditional wrap with builder'),
                   ),
                 ),
                 const SizedBox(height: 16),
                 ConditionalWrap(
                   condition: _condition,
-                  positiveBuilder: (context, child) => Container(
+                  builder: (child) => ColoredBox(
                     color: Colors.green,
                     child: child,
                   ),
-                  negativeBuilder: (context, child) => ColoredBox(
+                  fallback: (child) => ColoredBox(
                     color: Colors.red,
                     child: child,
                   ),
                   child: const Padding(
                     padding: EdgeInsets.all(16),
-                    child: Text('With Negative Parent Builder'),
+                    child: Text('conditional wrap with builder & fallback'),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                SwitchListTile(
+                  value: _color != null,
+                  title: Text('color: ${_color?.value.toRadixString(16)}'),
+                  onChanged: (value) {
+                    setState(() => _color = value ? Colors.blue : null);
+                  },
+                ),
+                const SizedBox(height: 16),
+                NullSafeWrap<Color>(
+                  value: _color,
+                  builder: (color, child) => ColoredBox(
+                    color: color,
+                    child: child,
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text('null safe wrap'),
                   ),
                 ),
               ],
