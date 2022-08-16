@@ -65,7 +65,7 @@ class _AppState extends State<App> {
                 const SizedBox(height: 16),
                 SwitchListTile(
                   value: _color != null,
-                  title: Text('color: ${_color?.value.toRadixString(16)}'),
+                  title: Text('color:  ${_color?.title}'),
                   onChanged: (value) {
                     setState(() => _color = value ? Colors.blue : null);
                   },
@@ -89,4 +89,8 @@ class _AppState extends State<App> {
       ),
     );
   }
+}
+
+extension ColorExtension on Color {
+  String? get title => this == Colors.blue ? 'blue' : null;
 }
