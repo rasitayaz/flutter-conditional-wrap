@@ -1,4 +1,4 @@
-# Flutter Conditional Wrap
+# Flutter Conditional Wrap 🌯
 
 [![Pub](https://img.shields.io/pub/v/conditional_wrap.svg?style=popout)](https://pub.dartlang.org/packages/conditional_wrap)
 [![](https://img.shields.io/badge/github-rasitayaz-red)](https://github.com/rasitayaz)
