@@ -10,23 +10,42 @@ A widget that allows you to conditionally wrap a child subtree with a parent wid
 
 ## Usage
 
-Simply wrap the widget subtree with a `ConditionalWrap` widget and pass the required properties.
+### Conditional Wrap
+
+`ConditionalWrap` widget takes a boolean `condition` parameter and wraps the child subtree with `builder` if the condition is true.
 
 ```dart
 ConditionalWrap(
   condition: shouldIncludeParent,
-  positiveBuilder: (context, child) => ParentWidget(child: child),
+  builder: (child) => ParentWidget(child: child),
   child: ChildSubtree(),
 ),
 ```
 
-You can also provide an alternative builder to use when the `condition` is false.
+You can also provide a `fallback` builder to use when the `condition` is false.
 
 ```dart
 ConditionalWrap(
-  condition: shouldUsePositiveBuilder,
-  positiveBuilder: (context, child) => ParentWidget(child: child),
-  negativeBuilder: (context, child) => AlternativeParent(child: child),
+  condition: _shouldUseBuilder,
+  builder: (child) => ParentWidget(child: child),
+  fallback: (child) => FallbackParent(child: child),
   child: ChildSubtree(),
+),
+```
+
+### Null Safe Wrap
+
+`NullSafeWrap<T>` widget takes a generic `T? value` parameter and wraps the child subtree with `builder` if the value is not null. This builder provides `T value` argument that can be used safely.
+
+Similarly to conditional wrap, you can provide a `fallback` to use when the value is null.
+
+```dart
+NullSafeWrap<Color>(
+  value: _color,
+  builder: (color, child) => ColoredBox(
+    color: color,
+    child: child,
+  ),
+  child: Text('hello, friend.'),
 ),
 ```
