@@ -19,10 +19,10 @@ class ConditionalWrap extends StatelessWidget {
 
   /// Parent builder to use when [condition] is false.
   ///
-  /// If not specified, the [child] is returned.
+  /// If not specified, [child] is returned.
   final ParentBuilder? fallback;
 
-  /// The widget to be conditionally wrapped.
+  /// Widget to be conditionally wrapped.
   final Widget child;
 
   @override
