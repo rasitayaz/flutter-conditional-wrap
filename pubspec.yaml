@@ -1,6 +1,6 @@
 name: conditional_wrap
 description: A Flutter widget that allows you to conditionally wrap a child subtree with a parent widget
-version: 0.0.1
+version: 1.0.0
 homepage: https://github.com/rasitayaz/flutter-conditional-wrap
 repository: https://github.com/rasitayaz/flutter-conditional-wrap
 issue_tracker: https://github.com/rasitayaz/flutter-conditional-wrap/issues
