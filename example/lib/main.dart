@@ -24,7 +24,7 @@ class _AppState extends State<App> {
       home: Scaffold(
         body: Center(
           child: SizedBox(
-            width: 300,
+            width: 256,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -43,7 +43,7 @@ class _AppState extends State<App> {
                   ),
                   child: const Padding(
                     padding: EdgeInsets.all(16),
-                    child: Text('conditional wrap with builder'),
+                    child: Text('conditional wrap'),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -59,7 +59,7 @@ class _AppState extends State<App> {
                   ),
                   child: const Padding(
                     padding: EdgeInsets.all(16),
-                    child: Text('conditional wrap with builder & fallback'),
+                    child: Text('conditional wrap with fallback'),
                   ),
                 ),
                 const SizedBox(height: 16),
