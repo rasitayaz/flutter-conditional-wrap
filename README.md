@@ -16,7 +16,7 @@ A widget that allows you to conditionally wrap a child subtree with a parent wid
 
 ```dart
 ConditionalWrap(
-  condition: shouldIncludeParent,
+  condition: _shouldIncludeParent,
   builder: (child) => ParentWidget(child: child),
   child: ChildSubtree(),
 ),
