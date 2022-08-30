@@ -37,7 +37,7 @@ class _AppState extends State<App> {
                 const SizedBox(height: 16),
                 ConditionalWrap(
                   condition: _condition,
-                  builder: (child) => ColoredBox(
+                  wrapper: (child) => ColoredBox(
                     color: Colors.green,
                     child: child,
                   ),
@@ -49,7 +49,7 @@ class _AppState extends State<App> {
                 const SizedBox(height: 16),
                 ConditionalWrap(
                   condition: _condition,
-                  builder: (child) => ColoredBox(
+                  wrapper: (child) => ColoredBox(
                     color: Colors.green,
                     child: child,
                   ),
@@ -73,7 +73,7 @@ class _AppState extends State<App> {
                 const SizedBox(height: 16),
                 NullSafeWrap<Color>(
                   value: _color,
-                  builder: (color, child) => ColoredBox(
+                  wrapper: (color, child) => ColoredBox(
                     color: color,
                     child: child,
                   ),
@@ -92,5 +92,5 @@ class _AppState extends State<App> {
 }
 
 extension ColorExtension on Color {
-  String? get title => this == Colors.blue ? 'blue' : null;
+  String get title => this == Colors.blue ? 'blue' : 'unknown';
 }
