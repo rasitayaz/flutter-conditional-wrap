@@ -1,3 +1,7 @@
+## 2.0.0
+
+* Renamed parent wrappers as `wrapper` since they do not pass any context.
+
 ## 1.0.0
 
 * Added `NullSafeWrap` widget.
