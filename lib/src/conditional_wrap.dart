@@ -1,4 +1,4 @@
-import 'package:conditional_wrap/src/builders.dart';
+import 'package:conditional_wrap/src/wrappers.dart';
 import 'package:flutter/widgets.dart';
 
 class ConditionalWrap extends StatelessWidget {
@@ -6,21 +6,21 @@ class ConditionalWrap extends StatelessWidget {
   const ConditionalWrap({
     Key? key,
     required this.condition,
-    required this.builder,
+    required this.wrapper,
     this.fallback,
     required this.child,
   }) : super(key: key);
 
-  /// Decides on which [ParentBuilder] to use.
+  /// Decides on which [Wrapper] to use.
   final bool condition;
 
-  /// Parent builder to use when [condition] is true.
-  final ParentBuilder builder;
+  /// Wrapper to use when [condition] is true.
+  final Wrapper wrapper;
 
-  /// Parent builder to use when [condition] is false.
+  /// Wrapper to use when [condition] is false.
   ///
   /// If not specified, [child] is returned.
-  final ParentBuilder? fallback;
+  final Wrapper? fallback;
 
   /// Widget to be conditionally wrapped.
   final Widget child;
@@ -28,7 +28,7 @@ class ConditionalWrap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (condition) {
-      return builder(child);
+      return wrapper(child);
     } else if (fallback != null) {
       return fallback!(child);
     } else {

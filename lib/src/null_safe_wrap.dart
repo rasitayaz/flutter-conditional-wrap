@@ -1,4 +1,4 @@
-import 'package:conditional_wrap/src/builders.dart';
+import 'package:conditional_wrap/src/wrappers.dart';
 import 'package:flutter/widgets.dart';
 
 class NullSafeWrap<T> extends StatelessWidget {
@@ -6,21 +6,21 @@ class NullSafeWrap<T> extends StatelessWidget {
   const NullSafeWrap({
     Key? key,
     required this.value,
-    required this.builder,
+    required this.wrapper,
     this.fallback,
     required this.child,
   }) : super(key: key);
 
-  /// Value to check for null-safety, passed to [builder].
+  /// Value to check for null-safety, passed to [wrapper].
   final T? value;
 
-  /// Parent builder to use when [value] is not null.
-  final NullSafeBuilder<T> builder;
+  /// Wrapper to use when [value] is not null.
+  final NullSafeWrapper<T> wrapper;
 
-  /// Parent builder to use when [value] is null.
+  /// Wrapper to use when [value] is null.
   ///
   /// If not specified, [child] is returned.
-  final ParentBuilder? fallback;
+  final Wrapper? fallback;
 
   /// Widget to be conditionally wrapped.
   final Widget child;
@@ -28,7 +28,7 @@ class NullSafeWrap<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (value != null) {
-      return builder(value as T, child);
+      return wrapper(value as T, child);
     } else if (fallback != null) {
       return fallback!(child);
     } else {
