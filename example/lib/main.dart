@@ -35,28 +35,29 @@ class _AppState extends State<App> {
                   onChanged: (value) => setState(() => _condition = value),
                 ),
                 const SizedBox(height: 16),
-                ConditionalWrap(
-                  condition: _condition,
-                  wrapper: (child) => ColoredBox(
-                    color: Colors.green,
-                    child: child,
-                  ),
+                WidgetWrapper(
+                  wrapper: (child) => _condition
+                      ? ColoredBox(
+                          color: Colors.green,
+                          child: child,
+                        )
+                      : child,
                   child: const Padding(
                     padding: EdgeInsets.all(16),
                     child: Text('conditional wrap'),
                   ),
                 ),
                 const SizedBox(height: 16),
-                ConditionalWrap(
-                  condition: _condition,
-                  wrapper: (child) => ColoredBox(
-                    color: Colors.green,
-                    child: child,
-                  ),
-                  fallback: (child) => ColoredBox(
-                    color: Colors.red,
-                    child: child,
-                  ),
+                WidgetWrapper(
+                  wrapper: (child) => _condition
+                      ? ColoredBox(
+                          color: Colors.green,
+                          child: child,
+                        )
+                      : ColoredBox(
+                          color: Colors.red,
+                          child: child,
+                        ),
                   child: const Padding(
                     padding: EdgeInsets.all(16),
                     child: Text('conditional wrap with fallback'),
@@ -71,12 +72,16 @@ class _AppState extends State<App> {
                   },
                 ),
                 const SizedBox(height: 16),
-                NullSafeWrap<Color>(
-                  value: _color,
-                  wrapper: (color, child) => ColoredBox(
-                    color: color,
-                    child: child,
-                  ),
+                WidgetWrapper(
+                  wrapper: (child) {
+                    final color = _color;
+                    return color != null
+                        ? ColoredBox(
+                            color: color,
+                            child: child,
+                          )
+                        : child;
+                  },
                   child: const Padding(
                     padding: EdgeInsets.all(16),
                     child: Text('null safe wrap'),
